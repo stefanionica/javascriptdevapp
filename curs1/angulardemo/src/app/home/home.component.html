@@ -1,4 +1,5 @@
 <h1>{{ title }}</h1>
+<h3>{{ salut }}</h3>
 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi voluptate ullam excepturi voluptates quos reiciendis quaerat veritatis cum deserunt ex eius velit magnam nemo blanditiis tempore id dicta, incidunt dolor!</p>
 <ul>
     <li>{{user.id}}</li>
@@ -11,3 +12,15 @@
 <img *ngIf = 'showImage'src='{{image}}' alt="{{user.nume}}">
 
 <button (click)='afiseazaImagine()'>Afiseaza/Ascunde Imagine</button>
+
+<h2>Transfer informatii bidirectional</h2>
+
+<input type="text" [(ngModel)]="nume">
+{{ nume }}
+<br> <br>
+<div>
+    <div *ngFor="let erou of eroi"> 
+        <p *ngIf = "erou.id <=3">{{erou.id}} - {{erou.name}}</p>
+    </div>
+
+</div>
