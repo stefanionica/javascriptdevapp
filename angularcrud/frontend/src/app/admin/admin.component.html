@@ -21,6 +21,16 @@
                 <input [(ngModel)] = "selectedUser.datanastere" name="datanastere" type="date" class="form-control" id="an" aria-describedby="anHealp">
                 <small id="anHealp" class="form-text text-muted">Format:2022-01-01</small>
               </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email</label>
+                <input [(ngModel)] = "selectedUser.email" name="email" type="text" class="form-control" id="email" aria-describedby="emailHealp">
+                <small id="prenumeHealp" class="form-text text-muted">Email completat corect</small>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Telefon</label>
+                <input [(ngModel)] = "selectedUser.telefon" name="telefon" type="text" class="form-control" id="telefon" aria-describedby="telefonHealp">
+                <small id="telefonHealp" class="form-text text-muted"> completat corect</small>
+              </div>
               <input [(ngModel)] = "selectedUser.id" name="id" type="hidden" class="form-control" id="id" >
                
             

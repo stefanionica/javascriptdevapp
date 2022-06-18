@@ -26,7 +26,7 @@ export class AdminComponent implements OnInit {
   createOrUpdateUser(form: { value: User; }) {
     if (this.selectedUser && this.selectedUser.id) {
       this.apiService.updateUser(this.selectedUser.id,form.value).subscribe((user: User) => {
-        console.log('Student updated', user);
+        console.log('User updated', user);
       });
     }
     else {

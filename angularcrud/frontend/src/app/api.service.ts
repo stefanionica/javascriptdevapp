@@ -18,6 +18,9 @@ export class ApiService {
   readUsers(): Observable<User[]>{
     return this.httpClient.get<User[]>(`${this.NODE_API_SERVER}`);
   }
+  readUser(id:string): Observable<User[]>{
+    return this.httpClient.get<User[]>(`${this.NODE_API_SERVER}/${id}`);
+  }
   updateUser(id:number,user: User){
     return this.httpClient.put<User>(`${this.NODE_API_SERVER}/${id}`, user);
   }
