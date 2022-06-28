@@ -13,7 +13,17 @@ userRouter.get("/", async (req: Request, res: Response) => {
     res.status(200).json({"data": users});
   });
 });
+userRouter.get("/:name", async (req: Request, res: Response) => {
+  const nume: string = String(req.params.name);
+  //console.log((req.params);
+  userModel.findByName(nume,(err: Error, users: User[]) => {
+    if (err) {
+      return res.status(500).json({"errorMessage": err.message});
+    }
 
+    res.status(200).json({"data": users});
+  });
+});
 
 userRouter.get("/:id", async (req: Request, res: Response) => {
   const userId: number = Number(req.params.id);

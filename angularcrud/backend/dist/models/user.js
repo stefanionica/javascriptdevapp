@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteUser = exports.update = exports.create = exports.findOne = exports.findAll = void 0;
+exports.deleteUser = exports.update = exports.create = exports.findOne = exports.findByName = exports.findAll = void 0;
 const db_1 = require("../db");
 // Get all users
 const findAll = (callback) => {
@@ -28,6 +28,31 @@ const findAll = (callback) => {
     });
 };
 exports.findAll = findAll;
+const findByName = (name, callback) => {
+    const queryString = "SELECT * FROM jsusers WHERE nume LIKE '%" + name + "%'";
+    db_1.db.query(queryString, (err, result) => {
+        if (err) {
+            callback(err);
+        }
+        const rows = result;
+        const users = [];
+        rows.forEach((row) => {
+            const user = {
+                id: row.id,
+                nume: row.nume,
+                prenume: row.prenume,
+                email: row.email,
+                datanastere: row.datanastere,
+                telefon: row.telefon,
+                dataadaugare: row.dataadaugare,
+                actiune: "",
+            };
+            users.push(user);
+        });
+        callback(null, users);
+    });
+};
+exports.findByName = findByName;
 // Get one user
 const findOne = (userId, callback) => {
     const queryString = `SELECT * FROM jsusers WHERE id=?`;

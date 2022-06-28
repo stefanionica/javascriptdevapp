@@ -50,6 +50,16 @@ userRouter.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         res.status(200).json({ "data": users });
     });
 }));
+userRouter.get("/:name", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const nume = String(req.params.name);
+    //console.log((req.params);
+    userModel.findByName(nume, (err, users) => {
+        if (err) {
+            return res.status(500).json({ "errorMessage": err.message });
+        }
+        res.status(200).json({ "data": users });
+    });
+}));
 userRouter.get("/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const userId = Number(req.params.id);
     userModel.findOne(userId, (err, user) => {
